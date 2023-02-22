@@ -18,7 +18,7 @@ fetch("https://rss.walla.co.il/feed/5700")
   });
 function createLine(index, content, inner) {
   const span = document.createElement("span");
-  span.classList.add(inner ? "innerCircle" : "outerCircle");
+  span.classList.add("circle");
   const innerContent = document.createElement("p");
   innerContent.id = "innerContent";
   span.appendChild(innerContent);

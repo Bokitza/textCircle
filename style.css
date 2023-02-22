@@ -3,16 +3,6 @@
   src: url("narkis.ttf") format("truetype");
 }
 
-#blackCircle {
-  background-color: black;
-  border-radius: 50%;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  width: 40px;
-  height: 40px;
-}
-
 #innerContent {
   background-color: black;
   font-size: 32px;
@@ -50,7 +40,9 @@
   height: 140px;
   margin: 0px;
 }
+
 #main {
+  animation: rotation 60s linear infinite;
   display: flex;
   width: 100vw;
   height: 100vh;
@@ -60,16 +52,7 @@
   justify-content: center;
 }
 
-.innerCircle {
-  width: 3200px;
-  overflow-x: hidden;
-  position: absolute;
-  left: 50%;
-  top: 50vh;
-  transform-origin: left;
-}
-
-.outerCircle {
+.circle {
   width: 3200px;
   overflow-x: hidden;
   position: absolute;
