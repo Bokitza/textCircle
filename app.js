@@ -3,9 +3,15 @@ fetch("https://rss.walla.co.il/feed/5700")
   .then((str) => new window.DOMParser().parseFromString(str, "text/xml"))
   .then((data) => {
     const items = data.querySelectorAll("item");
-    const content = Array.from(items).map(
-      (item) => item.textContent.split("br/>")[1].split("</p>")[0]
-    );
+    const content = Array.from(items).map((item) => {
+      let text = item.textContent.split("br/>")[1].split("</p>")[0];
+
+      const maximumLettersInArticle = 140;
+      if (text.length > maximumLettersInArticle) {
+        return text.slice(0, maximumLettersInArticle);
+      }
+      return text;
+    });
 
     Array(25)
       .fill(1)
