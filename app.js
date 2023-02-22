@@ -16,6 +16,7 @@ fetch("https://rss.walla.co.il/feed/5700")
         document.querySelector("#main").appendChild(outer);
       });
   });
+
 function createLine(index, content, inner) {
   const span = document.createElement("span");
   span.classList.add("circle");
