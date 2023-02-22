@@ -11,37 +11,42 @@
   left: 50%;
   width: 40px;
   height: 40px;
-  z-index: 10;
 }
 
-p {
-  margin: 0px;
+#innerContent {
+  background-color: black;
+  font-size: 32px;
   position: relative;
-  animation: sweep 5s infinite ease-in-out;
+  /* this is the time of the whole animation loop */
+  animation: sweep 25s infinite ease-in-out;
 }
 
+/* this is the most fun part */
 @keyframes sweep {
   0% {
-    right: -300px;
+    right: -40%;
   }
-  50% {
-    right: 100px;
+  30% {
+    right: 20%;
+  }
+  85% {
+    right: 72%;
   }
 
   100% {
-    right: 450px;
+    right: 100%;
   }
 }
 
 #hole {
   z-index: 100;
   position: relative;
-  left: 3px;
+  top: 60px;
   box-shadow: 0px 0px 3px 5px black;
   border-radius: 50%;
   background-color: black;
-  width: 60px;
-  height: 60px;
+  width: 100px;
+  height: 100px;
   margin: 0px;
 }
 #main {
@@ -55,17 +60,21 @@ p {
 }
 
 .innerCircle {
+  width: 3200px;
   overflow-x: hidden;
-  position: relative;
-  right: 100px;
-  background-color: black;
+  position: absolute;
+  left: 50%;
+  top: 50vh;
+  transform-origin: left;
 }
 
 .outerCircle {
-  background: black;
+  width: 3200px;
   overflow-x: hidden;
-  position: relative;
-  right: 100px;
+  position: absolute;
+  left: 50%;
+  top: 50vh;
+  transform-origin: left;
 }
 
 @keyframes rotation {
@@ -77,6 +86,9 @@ p {
   }
 }
 body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
   background: black;
   color: white;
   font-family: narkis;

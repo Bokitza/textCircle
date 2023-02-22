@@ -1,26 +1,32 @@
-let innerIterator = 0;
-let outerIterator = 0.5;
-document.querySelectorAll(".innerCircle").forEach((node) => {
-  node.style.position = "absolute";
-  node.style.top = "50vh";
-  node.style.left = "50vw";
-  node.style.transformOrigin = "left";
-  node.style.rotate = innerIterator * 20 + "deg";
-  node.style.display = "flex";
-  innerIterator++;
-});
-document.querySelectorAll(".outerCircle").forEach((node) => {
-  node.style.position = "absolute";
-  node.style.top = "50vh";
-  node.style.left = "50vw";
-  node.style.transformOrigin = "left";
-  node.style.rotate = outerIterator * 20 + "deg";
-  node.style.display = "flex";
-  outerIterator++;
-});
+fetch("https://rss.walla.co.il/feed/5700")
+  .then((response) => response.text())
+  .then((str) => new window.DOMParser().parseFromString(str, "text/xml"))
+  .then((data) => {
+    const items = data.querySelectorAll("item");
+    const content = Array.from(items).map(
+      (item) => item.textContent.split("br/>")[1].split("</p>")[0]
+    );
 
-let delay = 0;
-document.querySelectorAll("p").forEach((node) => {
-  node.style.animationDelay = delay * 0.03 + "s";
-  delay++;
-});
+    Array(25)
+      .fill(1)
+      .forEach((item, index) => {
+        const inner = createLine(index, content[index], true);
+        const outer = createLine(index, content[index], false);
+        document.querySelector("#main").appendChild(inner);
+        document.querySelector("#main").appendChild(outer);
+      });
+  });
+function createLine(index, content, inner) {
+  const span = document.createElement("span");
+  span.classList.add(inner ? "innerCircle" : "outerCircle");
+  const innerContent = document.createElement("p");
+  innerContent.id = "innerContent";
+  span.appendChild(innerContent);
+  span.style.rotate = index * 20 + (inner ? 0 : 10) + "deg";
+  span.style.display = "flex";
+
+  //the delay between every line
+  innerContent.style.animationDelay = index * 0.1 + "s";
+  innerContent.innerText = content;
+  return span;
+}
