@@ -1,0 +1,83 @@
+@font-face {
+  font-family: "narkis";
+  src: url("narkis.ttf") format("truetype");
+}
+
+#blackCircle {
+  background-color: black;
+  border-radius: 50%;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 40px;
+  height: 40px;
+  z-index: 10;
+}
+
+p {
+  margin: 0px;
+  position: relative;
+  animation: sweep 5s infinite ease-in-out;
+}
+
+@keyframes sweep {
+  0% {
+    right: -300px;
+  }
+  50% {
+    right: 100px;
+  }
+
+  100% {
+    right: 450px;
+  }
+}
+
+#hole {
+  z-index: 100;
+  position: relative;
+  left: 3px;
+  box-shadow: 0px 0px 3px 5px black;
+  border-radius: 50%;
+  background-color: black;
+  width: 60px;
+  height: 60px;
+  margin: 0px;
+}
+#main {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  text-align: center;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+}
+
+.innerCircle {
+  overflow-x: hidden;
+  position: relative;
+  right: 100px;
+  background-color: black;
+}
+
+.outerCircle {
+  background: black;
+  overflow-x: hidden;
+  position: relative;
+  right: 100px;
+}
+
+@keyframes rotation {
+  from {
+    rotate: 0deg;
+  }
+  to {
+    rotate: 360deg;
+  }
+}
+body {
+  background: black;
+  color: white;
+  font-family: narkis;
+}
