@@ -26,7 +26,7 @@ function createLine(index, content, inner) {
   span.style.display = "flex";
 
   //the delay between every line
-  innerContent.style.animationDelay = index * 0.1 + "s";
+  innerContent.style.animationDelay = index * Math.random() * 0.7 + "s";
   innerContent.innerText = content;
   return span;
 }
