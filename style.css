@@ -4,41 +4,70 @@
 }
 
 #innerContent {
-  background-color: black;
   font-size: 32px;
   position: relative;
   /* this is the time of the whole animation loop */
-  animation: sweep 25s infinite ease-in-out;
+  animation: sweep 20s cubic-bezier(0, 0.69, 0.81, 0.65) infinite;
+  right: -30%;
 }
 
 /* this is the most fun part */
 @keyframes sweep {
-  0% {
-    right: -40%;
-  }
-  30% {
-    right: 20%;
-  }
-  85% {
-    right: 72%;
-  }
-
-  100% {
-    right: 100%;
+  to {
+    right: 70%;
   }
 }
 
 /* this is the black hole in the middle */
 #hole {
   z-index: 100;
-  position: relative;
-  top: 60px;
+  position: fixed;
+  top: calc(50vh - 50px);
+  right: calc(50vw - 100px);
+
   box-shadow: 0px 0px 3px 5px black;
   border-radius: 50%;
   background-color: black;
-  width: 140px;
-  height: 140px;
+  width: 200px;
+  height: 200px;
   margin: 0px;
+}
+
+/* this is the black hole in the middle */
+#bigHole {
+  position: fixed;
+  top: calc(50vh - 150px);
+  right: calc(50vw - 200px);
+
+  box-shadow: 0px 0px 3px 5px black;
+  border-radius: 50%;
+  background-color: rgb(255, 255, 255);
+  width: 400px;
+  height: 400px;
+  margin: 0px;
+  animation: appear 11s linear infinite;
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+  }
+
+  70% {
+    opacity: 0;
+  }
+  72% {
+    opacity: 1;
+  }
+  94% {
+    opacity: 1;
+  }
+  96% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
 #main {
@@ -53,6 +82,23 @@
   justify-content: center;
 }
 
+main {
+  /* speed of the spin is defined here */
+  display: flex;
+  width: 100vw;
+  position: fixed;
+  margin: 0px;
+  padding: 0px;
+  left: 0px;
+  right: 0px;
+  top: 0px;
+  height: 100vh;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  background: black;
+}
+
 .circle {
   width: 3200px;
   overflow-x: hidden;
@@ -60,6 +106,7 @@
   left: 50%;
   top: 50vh;
   transform-origin: left;
+  mix-blend-mode: difference;
 }
 
 @keyframes rotation {
@@ -74,7 +121,6 @@ body {
   width: 100vw;
   height: 100vh;
   overflow: hidden;
-  background: black;
   color: white;
   font-family: narkis;
 }

@@ -5,19 +5,18 @@ fetch("https://rss.walla.co.il/feed/5700")
     const items = data.querySelectorAll("item");
     const content = Array.from(items).map((item) => {
       let text = item.textContent.split("br/>")[1].split("</p>")[0];
-
-      const maximumLettersInArticle = 140;
+      const maximumLettersInArticle = 170;
       if (text.length > maximumLettersInArticle) {
         return text.slice(0, maximumLettersInArticle);
       }
       return text;
     });
 
-    Array(25)
+    Array(18)
       .fill(1)
-      .forEach((item, index) => {
+      .forEach((_, index) => {
         const inner = createLine(index, content[index], true);
-        const outer = createLine(index, content[index], false);
+        const outer = createLine(index, content[index + 4], false);
         document.querySelector("#main").appendChild(inner);
         document.querySelector("#main").appendChild(outer);
       });
@@ -33,7 +32,7 @@ function createLine(index, content, inner) {
   span.style.display = "flex";
 
   //the delay between every line
-  innerContent.style.animationDelay = index * Math.random() * 0.7 + "s";
+  innerContent.style.animationDelay = index * 1 + (inner ? 0 : 0.5) + "s";
   innerContent.innerText = content;
   return span;
 }
